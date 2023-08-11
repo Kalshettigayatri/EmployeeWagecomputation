@@ -1,45 +1,28 @@
-﻿namespace EmployeeWagcomputation
+﻿using EmpWageP04;
+
+internal class Program
 {
-    internal class Program
+    public static void Main()
     {
-        public const int IS_PART_TIME = 1;
-        public const int IS_FULL_TIME = 2;
-        public const int EMP_RATE_PER_HOUR = 20;
-        public const int NUMBER_OF_WORKING_DAYS = 20;
-        public const int MAX_HRS_IN_MONTH = 100;
 
-        private static void Main(string[] args)
+        Console.WriteLine("Hello Fellow Learners!\nWelcome to Employee Wage Problem.\nEnter the index no. of the program you want to run.");
+        Console.WriteLine("1.Basic Code\n2.Refactored Code");
+        int option = Convert.ToInt32(Console.ReadLine());
+
+        switch (option)
         {
-            Console.WriteLine("Welcome To Employee Wage Computation!");
-
-            int empHour = 0;
-            int totalWorkingDays = 0;
-            int totalEmpHrs = 0;
-
-            while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS)
-            {
-                totalWorkingDays++;
-                Random random = new Random();
-                int empCheck = random.Next(0, 3);
-
-                switch (empCheck)
-                {
-                    case IS_PART_TIME:
-                        empHour = 4;
-                        break;
-                    case IS_FULL_TIME:
-                        empHour = 8;
-                        break;
-                    default:
-                        empHour = 0;
-                        break;
-                }
-                totalEmpHrs += empHour;
-                Console.WriteLine("Days :" + totalWorkingDays + "EmpHrs : " + empHour);
-            }
-            int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("Total EmpWage: " + totalEmpWage);
+            case 1:
+                employee search = new employee();
+                search.EmployeeWage();
+                break;
+            case 2:
+                EmployeeWageCalculator employeeWageCalculator1 = new EmployeeWageCalculator();
+                EmployeeWageCalculator.ComputeEmployeeWage();
+                break;
+            default:
+                Console.WriteLine("Please Enter a Valid Index No.");
+                break;
         }
+        Console.ReadLine();
     }
 }
-   
